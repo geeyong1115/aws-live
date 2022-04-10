@@ -93,38 +93,10 @@ def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
     results = cursor.fetchall()
-    print(results)
-
-    empid = []
-    name = []
-    gender = []
-    phone = []
-    location = []
-    rate = []
-    position = []
-    hire_date = []
-
-    for row in results:
-        empid.append(row[0])
-        name.append(row[1])
-        gender.append(row[2])
-        phone.append(row[3])
-        location.append(row[4])
-        rate.append(row[5])
-        position.append(row[6])
-        hire_date.append(row[7])
 
     return render_template(
         'GetEmpOutput.html',
         results=list(results),
-        empid=empid,
-        name=name,
-        gender=gender,
-        phone=phone,
-        location=location,
-        rate=rate,
-        position=position,
-        hire_date=hire_date,
     )
 
 
