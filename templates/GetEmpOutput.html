@@ -22,29 +22,22 @@
 		</thead>
 		<tbody>
 			<tr>
-
 				{% for id in empid %}
-				{{id}}</br>
-				{% endfor %}
-
-				<!-- {% for nam in name %} -->
-				{{nam}}</br>
-				<!-- {% endfor %} -->
-
+				<td>{{id}}</br></td>
+				<td>{{name}}</td>
 				<td>{{gender}}</td>
 				<td>{{phone}}</td>
 				<td>{{location}}</td>
 				<td>{{rate}}</td>
 				<td>{{position}}</td>
 				<td>{{hire_date}}</td>
+				{% endfor %}
+
 			</tr>
 
 		</tbody>
 	</table>
 
-	{% for id in empid %}
-	{{id}}</br>
-	{% endfor %}
 </body>
 
 </html>
