@@ -108,6 +108,7 @@ def updateEmp(empid):
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee WHERE empid = %s', empid)
     results = cursor.fetchall()
+    cursor.close()
 
     return render_template('Edit.html', results=results)
 
@@ -140,7 +141,7 @@ def triggerUpdate():
          )
     )
     db_conn.commit()
-
+    cursor.close()
     print(cursor.rowcount, "record(s) affected")
 
     return render_template('GetEmpOutput.html')
@@ -157,7 +158,7 @@ def FetchData():
     cursor.execute('Select * from employee')
     results = cursor.fetchall()
     lresults = list(results)
-
+    cursor.close()
     return render_template(
         'GetEmpOutput.html',
         results=lresults,
