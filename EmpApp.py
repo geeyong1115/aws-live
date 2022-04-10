@@ -93,10 +93,11 @@ def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
     results = cursor.fetchall()
+    lresults = list(results)
 
     return render_template(
         'GetEmpOutput.html',
-        results=list(results),
+        results=lresults,
     )
 
 
