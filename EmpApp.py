@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from pymysql import connections
 import os
 import boto3
-import webbrowser       
+import webbrowser
 
 from config import *
 
@@ -27,6 +27,7 @@ table = 'employee'
 def home():
     return render_template('AddEmp.html')
 
+
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
     empid = request.form['empid']
@@ -48,7 +49,8 @@ def AddEmp():
 
     try:
 
-        cursor.execute(insert_sql, (empid, name, gender, phone, location, rate_per_day, position, hire_date))
+        cursor.execute(insert_sql, (empid, name, gender, phone,
+                       location, rate_per_day, position, hire_date))
         db_conn.commit()
         # Uplaod image file in S3 #
         image_name_in_s3 = "empid-" + str(empid) + "_image_file"
@@ -56,8 +58,10 @@ def AddEmp():
 
         try:
             print("Data inserted in MySQL RDS... uploading image to S3...")
-            s3.Bucket(custombucket).put_object(Key=image_name_in_s3, Body=image)
-            bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+            s3.Bucket(custombucket).put_object(
+                Key=image_name_in_s3, Body=image)
+            bucket_location = boto3.client(
+                's3').get_bucket_location(Bucket=custombucket)
             s3_location = (bucket_location['LocationConstraint'])
             if s3_location is None:
                 s3_location = ''
@@ -82,30 +86,31 @@ def AddEmp():
 # def getEmp():
 #     return render_template('GetEmp.html')
 
+
 @app.route("/fetchdata", methods=['POST'])
 def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
     result = cursor.fetchall()
-    
+
     print(cursor)
     p = []
     for row in result:
-        empid = "%s,"%row[0]
+        empid = "%s," % row[0]
         p.append(empid)
-        name = "%s,"%row[1]
+        name = "%s," % row[1]
         p.append(name)
-        gender = "%s,"%row[2]
+        gender = "%s," % row[2]
         p.append(gender)
-        phone = "%s,"%row[3]
+        phone = "%s," % row[3]
         p.append(phone)
-        location = "%s,"%row[3]
+        location = "%s," % row[3]
         p.append(location)
-        rate_per_day = "%s,"%row[3]
+        rate_per_day = "%s," % row[3]
         p.append(rate_per_day)
-        position = "%s,"%row[3]
+        position = "%s," % row[3]
         p.append(position)
-        hire_date = "%s"%row[3]
+        hire_date = "%s" % row[3]
         p.append(hire_date)
     # for row in result:
     #     empid = "%s,"%row[0]
@@ -125,10 +130,8 @@ def FetchData():
     #     hire_date = "%s"%row[3]
     #     p.append(hire_date)
 
-
     return render_template('GetEmpOutput.html', contents=p)
 
-    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
