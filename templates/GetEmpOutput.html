@@ -22,9 +22,9 @@
 		</thead>
 		<tbody>
 
-			<!-- {% for blog in blogs %} -->
+			{% for id in empid %}
 			<tr>
-				<td>{{empid}}</td>
+				<td>{{id}}</td>
 				<td>{{name}}</td>
 				<td>{{gender}}</td>
 				<td>{{phone}}</td>
@@ -33,7 +33,7 @@
 				<td>{{position}}</td>
 				<td>{{hire_date}}</td>
 			</tr>
-			<!-- {% endfor %} -->
+			{% endfor %}
 
 		</tbody>
 	</table>
