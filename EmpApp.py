@@ -25,12 +25,6 @@ table = 'employee'
 def home():
     return render_template('AddEmp.html')
 
-
-@app.route("/about", methods=['POST'])
-def about():
-    return render_template('www.intellipaat.com')
-
-
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
     empid = request.form['empid']
@@ -83,6 +77,19 @@ def AddEmp():
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=name)
 
+@app.route("/getemp", methods=['GET', 'POST'])
+def home():
+    return render_template('GetEmp.html')
+
+@app.route("/fetchdata", methods=['POST'])
+def FetchData():
+    cursor = db_conn.cursor()
+
+    cursor.execute('Select * from employee')
+    db_conn.commit()
+
+    for row in cursor:
+                print('%r' % (row,))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
