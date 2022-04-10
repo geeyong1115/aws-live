@@ -87,8 +87,6 @@ def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
     result = cursor.fetchall()
-
-    print(result)
     
     p = []
 
@@ -98,37 +96,22 @@ def FetchData():
     for row in result:
         empid = "%s,"%row[0]
         p.append(empid)
-        name = "<td>%s</td>"%row[1]
+        name = "%s,"%row[1]
         p.append(name)
-        gender = "<td>%s</td>"%row[2]
+        gender = "%s,"%row[2]
         p.append(gender)
-        phone = "<td>%s</td></tr>"%row[3]
+        phone = "%s,"%row[3]
         p.append(phone)
-        location = "<td>%s</td></tr>"%row[3]
+        location = "%s,"%row[3]
         p.append(location)
-        rate_per_day = "<td>%s</td></tr>"%row[3]
+        rate_per_day = "%s,"%row[3]
         p.append(rate_per_day)
-        position = "<td>%s</td></tr>"%row[3]
+        position = "%s,"%row[3]
         p.append(position)
-        hire_date = "<td>%s</td></tr>"%row[3]
+        hire_date = "%s\n"%row[3]
         p.append(hire_date)
 
-    contents = '''<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-    <html>
-    <head>
-    <meta content="text/html; charset=ISO-8859-1"
-    http-equiv="content-type">
-    <title>Python Webbrowser</title>
-    </head>
-    <body>
-    <table>
-    %s
-    </table>
-    </body>
-    </html>
-    '''%(p)
-
-    return render_template('GetEmpOutput.html', contents=results)
+    return render_template('GetEmpOutput.html', contents=p)
 
     
 
