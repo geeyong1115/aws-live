@@ -84,12 +84,11 @@ def home():
 @app.route("/fetchdata", methods=['POST'])
 def FetchData():
     cursor = db_conn.cursor()
-
     cursor.execute('Select * from employee')
-    db_conn.commit()
+    result = cursor.fetchall()
 
-    for row in cursor:
-                print('%r' % (row,))
+    for row in result:
+        print('%r' % (row,))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
