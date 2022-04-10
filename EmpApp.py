@@ -3,6 +3,7 @@ from pymysql import connections
 import os
 import boto3
 import webbrowser       
+
 from config import *
 
 app = Flask(__name__)
@@ -125,15 +126,9 @@ def FetchData():
     </html>
     '''%(p)
 
-    filename = 'templates/getEmpDetails.html'
+    return render_template('GetEmpOutput.html', contents=contents)
 
-    output = open(filename,"w")
-    output.write(contents)
-    output.close()
-
-     webbrowser.open(filename)
-    return 1
-
+    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
