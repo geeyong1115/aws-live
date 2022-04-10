@@ -141,7 +141,7 @@ def triggerUpdate():
 
         print(cursor.rowcount, "record(s) affected")
 
-        return render_template('GetEmpOutput.html')
+        return print("sd")
     else:
         return print("asdasd")
 
