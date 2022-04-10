@@ -116,14 +116,14 @@ def updateEmp(empid):
 @app.route("/triggerUpdate", methods=['GET', 'POST'])
 def triggerUpdate():
 
-    empid = request.form['empid']
-    name = request.form['name']
-    gender = request.form['gender']
-    phone = request.form['phone']
-    location = request.form['location']
-    rate_per_day = request.form['rate_per_day']
-    position = request.form['position']
-    hire_date = request.form['hire_date']
+    empid = request.args.get("empid")
+    name = request.args.get("name")
+    gender = request.args.get("gender")
+    phone = request.args.get("phone")
+    location = request.args.get("location")
+    rate_per_day = request.args.get("rate_per_day")
+    position = request.args.get("position")
+    hire_date = request.args.get("hire_date")
 
     cursor = db_conn.cursor()
     cursor.execute(
