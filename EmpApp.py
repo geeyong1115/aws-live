@@ -91,21 +91,19 @@ def AddEmp():
 def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
-    result = cursor.fetchall()
-    print(result[0].name)
+    results = cursor.fetchall()
+    print(results.count)
 
-    class Emp:
-        def __init__(self, empid, name, gender, phone, location, rate, position, hire_date):
-            self.empid = empid
-            self.name = name
-            self.gender = gender
-            self.phone = phone
-            self.location = location
-            self.rate = rate
-            self.position = position
-            self.hire_date = hire_date
+    empid = []
+    name = []
+    gender = []
+    phone = []
+    location = []
+    rate = []
+    position = []
+    hire_date = []
 
-    for row in result:
+    for row in results:
         empid = row[0]
         name = row[1]
         gender = row[2]
@@ -117,26 +115,15 @@ def FetchData():
 
     return render_template(
         'GetEmpOutput.html',
-        result=result
+        empid=empid,
+        name=name,
+        gender=gender,
+        phone=phone,
+        location=location,
+        rate=rate,
+        position=position,
+        hire_date=hire_date,
     )
-
-    # for row in result:
-    #     empid = "%s,"%row[0]
-    #     p.append(empid)
-    #     name = "%s,"%row[1]
-    #     p.append(name)
-    #     gender = "%s,"%row[2]
-    #     p.append(gender)
-    #     phone = "%s,"%row[3]
-    #     p.append(phone)
-    #     location = "%s,"%row[3]
-    #     p.append(location)
-    #     rate_per_day = "%s,"%row[3]
-    #     p.append(rate_per_day)
-    #     position = "%s,"%row[3]
-    #     p.append(position)
-    #     hire_date = "%s"%row[3]
-    #     p.append(hire_date)
 
 
 if __name__ == '__main__':
