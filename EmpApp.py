@@ -56,7 +56,7 @@ def AddEmp():
 
     image = request.files['image']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %d, %s, %s)"
     cursor = db_conn.cursor()
 
     if image.filename == "":
@@ -111,6 +111,36 @@ def updateEmp(empid):
     results = cursor.fetchall()
 
     return render_template('Edit.html', results=results)
+
+
+@app.route("/update", methods=['POST'])
+def triggerUpdate():
+    empid = request.form['empid']
+    name = request.form['name']
+    gender = request.form['gender']
+    phone = request.form['phone']
+    location = request.form['location']
+    rate_per_day = request.form['rate_per_day']
+    position = request.form['position']
+    hire_date = request.form['hire_date']
+
+    cursor = db_conn.cursor()
+    cursor.execute(
+        'UPDATE employee SET name=%s,gender=%s,phone=%s,location=%s,rate_per_day=%d,position=%s,hire_date=%s  WHERE empid=%s',
+        name,
+        gender,
+        phone,
+        location,
+        rate_per_day,
+        position,
+        hire_date,
+        empid
+    )
+    db_conn.commit()
+
+    print(cursor.rowcount, "record(s) affected")
+
+    return render_template('GetEmpOutput.html')
 
 
 @app.route("/fetchdata", methods=['GET', 'POST'])
