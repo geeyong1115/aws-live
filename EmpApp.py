@@ -25,6 +25,19 @@ output = {}
 table = 'employee'
 
 
+def lambda_handler(event, context):
+    print(event)
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = event['Records'][0]['s3']['object']['key']
+
+    s3 = boto3.client('s3')
+    obj = s3.get_object(
+        Bucket=bucket,
+        Key=key
+    )
+    print(obj['Body'].read().decode('utf-8'))
+
+
 @app.route("/", methods=['GET', 'POST'])
 def home():
     return render_template('AddEmp.html')
@@ -92,11 +105,12 @@ def getEmp():
 
 @app.route("/update/<empid>", methods=['GET', 'POST'])
 def updateEmp(empid):
+
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee WHERE empid = %s', empid)
     results = cursor.fetchall()
-    print(results)
-    return render_template('Edit.html')
+
+    return render_template('Edit.html', results=results)
 
 
 @app.route("/fetchdata", methods=['GET', 'POST'])
