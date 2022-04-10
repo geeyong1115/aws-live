@@ -87,7 +87,7 @@ def AddEmp():
 #     return render_template('GetEmp.html')
 
 
-@app.route("/fetchdata", methods=['GET'])
+@app.route("/fetchdata", methods=['GET', 'POST'])
 def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
