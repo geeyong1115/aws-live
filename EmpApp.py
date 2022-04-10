@@ -113,7 +113,7 @@ def updateEmp(empid):
     return render_template('Edit.html', results=results)
 
 
-@app.route("/update", methods=['GET', 'POST'])
+@app.route("/triggerUpdate", methods=['GET', 'POST'])
 def triggerUpdate():
 
     empid = request.form['empid']
