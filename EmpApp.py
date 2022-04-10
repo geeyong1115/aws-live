@@ -91,7 +91,8 @@ def getEmp():
 
 
 @app.route("/update/<id>", methods=['GET', 'POST'])
-def updateEmp():
+def updateEmp(id):
+    print(id)
     return render_template('AddEmp.html')
 
 
