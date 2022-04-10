@@ -88,13 +88,15 @@ def FetchData():
     cursor.execute('Select * from employee')
     result = cursor.fetchall()
 
+    print(result)
+    
     p = []
 
-    tbl = "<tr><td>ID</td><td>Name</td><td>Gender</td><td>Location</td><td>Rate Per Day</td><td>Position</td><td>Hire_date</td></tr>"
+    tbl = "Name Gender  Location    Rate Per Day    Position    Hire_date   "
     p.append(tbl)
 
     for row in result:
-        empid = "<tr><td>%s</td>"%row[0]
+        empid = "%s,"%row[0]
         p.append(empid)
         name = "<td>%s</td>"%row[1]
         p.append(name)
@@ -126,7 +128,7 @@ def FetchData():
     </html>
     '''%(p)
 
-    return render_template('GetEmpOutput.html', contents=contents)
+    return render_template('GetEmpOutput.html', contents=results)
 
     
 
