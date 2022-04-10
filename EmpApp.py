@@ -147,7 +147,7 @@ def triggerUpdate():
     return render_template('GetEmpOutput.html')
 
 
-@app.route("/delete/<empid>", methods=['POST'])
+@app.route("/delete/<empid>", methods=['GET'])
 def deleteEmp(empid):
     return empid
 
