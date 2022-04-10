@@ -55,6 +55,7 @@ def AddEmp():
     position = request.form['position']
     hire_date = request.form['hire_date']
     image = request.files['image']
+    conv_rate = int(rate_per_day)
 
     insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %d, %s, %s)"
     cursor = db_conn.cursor()
@@ -65,7 +66,7 @@ def AddEmp():
     try:
 
         cursor.execute(insert_sql, (empid, name, gender, phone,
-                       location, int(rate_per_day), position, hire_date))
+                       location, conv_rate, position, hire_date))
         db_conn.commit()
         # Uplaod image file in S3 #
         image_name_in_s3 = "empid-" + str(empid) + "_image_file"
