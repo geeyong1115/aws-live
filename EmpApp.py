@@ -83,9 +83,15 @@ def AddEmp():
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=name)
 
-# @app.route("/getemp", methods=['GET', 'POST'])
-# def getEmp():
-#     return render_template('GetEmp.html')
+
+@app.route("/getemp", methods=['GET'])
+def getEmp():
+    return render_template('GetEmp.html')
+
+
+@app.route("/update/{id}", methods=['GET'])
+def getEmp():
+    return print('update {id}')
 
 
 @app.route("/fetchdata", methods=['GET', 'POST'])

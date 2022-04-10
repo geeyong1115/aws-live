@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+	<h1>Employee Details</h1>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -41,7 +41,12 @@
 				<td>{{result[5]}}</td>
 				<td>{{result[6]}}</td>
 				<td>{{result[7]}}</td>
-
+				<td>
+					<a href="/update/{{result[0]}}">Update</a>
+				</td>
+				<td>
+					<a href="/delete/{{result[0]}}">Delete</a>
+				</td>
 			</tr>
 			{% endfor %}
 
