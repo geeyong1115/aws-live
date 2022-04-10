@@ -103,7 +103,7 @@ def getEmp():
     return render_template('GetEmp.html')
 
 
-@app.route("/update/<empid>", methods=['GET', 'POST'])
+@app.route("/update/<empid>", methods=['POST'])
 def updateEmp(empid):
 
     cursor = db_conn.cursor()
