@@ -116,7 +116,7 @@ def FetchData():
 
     return render_template(
         'GetEmpOutput.html',
-        result=results,
+        results=results,
         empid=empid,
         name=name,
         gender=gender,
