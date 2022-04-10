@@ -90,7 +90,7 @@ def getEmp():
 
 
 @app.route("/update/{id}", methods=['GET'])
-def getEmp():
+def updateEmp():
     return print('update {id}')
 
 
