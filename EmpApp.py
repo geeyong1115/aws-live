@@ -58,7 +58,7 @@ def AddEmp():
     print(type(hire_date))
     conv_rate = int(rate_per_day)
     # print(int(hire_date))
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %d, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     # if image.filename == "":
