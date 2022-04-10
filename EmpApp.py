@@ -132,7 +132,7 @@ def triggerUpdate():
          gender,
          phone,
          location,
-         rate_per_day,
+         int(rate_per_day),
          position,
          hire_date,
          empid
