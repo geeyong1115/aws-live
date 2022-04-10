@@ -93,6 +93,7 @@ def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
     results = cursor.fetchall()
+    print(results)
 
     empid = []
     name = []
@@ -112,9 +113,7 @@ def FetchData():
         rate.append(row[5])
         position.append(row[6])
         hire_date.append(row[7])
-        print(position)
 
-    # print(empid)
     return render_template(
         'GetEmpOutput.html',
         result=results,
