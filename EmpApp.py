@@ -131,7 +131,7 @@ def FetchData():
     output.write(contents)
     output.close()
 
-    webbrowser.open(filename)
+    return webbrowser.open(filename)
 
 
 if __name__ == '__main__':
