@@ -132,7 +132,7 @@ def triggerUpdate():
 
     cursor = db_conn.cursor()
     cursor.execute(
-        'UPDATE employee SET name=%s,gender=%s,phone=%s,location=%s,rate_per_day=%d,position=%s,hire_date=%s  WHERE empid=%s',
+        'UPDATE employee SET name=%s,gender=%s,phone=%s,location=%s,rate_per_day=%s,position=%s,hire_date=%s  WHERE empid=%s',
         (name,
          gender,
          phone,
