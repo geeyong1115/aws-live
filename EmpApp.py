@@ -115,35 +115,33 @@ def updateEmp(empid):
 
 @app.route("/update", methods=['GET', 'POST'])
 def triggerUpdate():
-    if request.method == 'POST':
-        empid = request.form['empid']
-        name = request.form['name']
-        gender = request.form['gender']
-        phone = request.form['phone']
-        location = request.form['location']
-        rate_per_day = request.form['rate_per_day']
-        position = request.form['position']
-        hire_date = request.form['hire_date']
 
-        cursor = db_conn.cursor()
-        cursor.execute(
-            'UPDATE employee SET name=%s,gender=%s,phone=%s,location=%s,rate_per_day=%d,position=%s,hire_date=%s  WHERE empid=%s',
-            name,
-            gender,
-            phone,
-            location,
-            rate_per_day,
-            position,
-            hire_date,
-            empid
-        )
-        db_conn.commit()
+    empid = request.form['empid']
+    name = request.form['name']
+    gender = request.form['gender']
+    phone = request.form['phone']
+    location = request.form['location']
+    rate_per_day = request.form['rate_per_day']
+    position = request.form['position']
+    hire_date = request.form['hire_date']
 
-        print(cursor.rowcount, "record(s) affected")
+    cursor = db_conn.cursor()
+    cursor.execute(
+        'UPDATE employee SET name=%s,gender=%s,phone=%s,location=%s,rate_per_day=%d,position=%s,hire_date=%s  WHERE empid=%s',
+        name,
+        gender,
+        phone,
+        location,
+        rate_per_day,
+        position,
+        hire_date,
+        empid
+    )
+    db_conn.commit()
 
-        return print("sd")
-    else:
-        return print("asdasd")
+    print(cursor.rowcount, "record(s) affected")
+
+    return render_template('GetEmpOutput.html')
 
 
 @app.route("/fetchdata", methods=['GET', 'POST'])
