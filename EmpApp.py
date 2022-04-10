@@ -93,8 +93,17 @@ def FetchData():
     cursor.execute('Select * from employee')
     result = cursor.fetchall()
 
-    print(cursor)
-    p = []
+    class Emp:
+        def __init__(self, empid, name, gender, phone, location, rate, position, hire_date):
+            self.empid = empid
+            self.name = name
+            self.gender = gender
+            self.phone = phone
+            self.location = location
+            self.rate = rate
+            self.position = position
+            self.hire_date = hire_date
+
     for row in result:
         empid = row[0]
         name = row[1]
@@ -107,14 +116,7 @@ def FetchData():
 
     return render_template(
         'GetEmpOutput.html',
-        empid=empid,
-        name=name,
-        gender=gender,
-        phone=phone,
-        location=location,
-        rate=rate,
-        position=position,
-        hire_date=hire_date,
+        result=result
     )
 
     # for row in result:
