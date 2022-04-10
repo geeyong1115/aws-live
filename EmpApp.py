@@ -103,7 +103,7 @@ def FetchData():
     hire_date = []
 
     for row in results:
-        empid = row[0]
+        empid = row
         name = row[1]
         gender = row[2]
         phone = row[3]
