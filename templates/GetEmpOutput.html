@@ -15,43 +15,46 @@
 
 <body>
 	<h1>Employee Details</h1>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Name</th>
-				<th>Gender</th>
-				<th>Phone</th>
-				<th>Location</th>
-				<th>Rate Per Day</th>
-				<th>Position</th>
-				<th>Hire Date</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for result in results %}
+	<form action="/update/{id}" autocomplete="on" method="POST">
 
-			<tr>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Gender</th>
+					<th>Phone</th>
+					<th>Location</th>
+					<th>Rate Per Day</th>
+					<th>Position</th>
+					<th>Hire Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for result in results %}
 
-				<td>{{result[0]}}</td>
-				<td>{{result[1]}}</td>
-				<td>{{result[2]}}</td>
-				<td>{{result[3]}}</td>
-				<td>{{result[4]}}</td>
-				<td>{{result[5]}}</td>
-				<td>{{result[6]}}</td>
-				<td>{{result[7]}}</td>
-				<td>
-					<a href="/update/{{result[0]}}">Update</a>
-				</td>
-				<td>
-					<a href="/delete/{{result[0]}}">Delete</a>
-				</td>
-			</tr>
-			{% endfor %}
+				<tr>
 
-		</tbody>
-	</table>
+					<td>{{result[0]}}</td>
+					<td>{{result[1]}}</td>
+					<td>{{result[2]}}</td>
+					<td>{{result[3]}}</td>
+					<td>{{result[4]}}</td>
+					<td>{{result[5]}}</td>
+					<td>{{result[6]}}</td>
+					<td>{{result[7]}}</td>
+					<td>
+						<a value="update" type="submit" href="/update/{{result[0]}}">Update</a>
+					</td>
+					<td>
+						<a href="/delete/{{result[0]}}">Delete</a>
+					</td>
+				</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+	</form>
 
 </body>
 

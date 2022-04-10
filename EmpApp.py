@@ -1,3 +1,4 @@
+from importlib.resources import path
 from unittest import result
 from flask import Flask, render_template, request
 from pymysql import connections
@@ -89,7 +90,7 @@ def getEmp():
     return render_template('GetEmp.html')
 
 
-@app.route("/update/{id}", methods=['GET'])
+@app.route("/update/{id}", methods=['POST'])
 def updateEmp():
     return render_template('AddEmp.html')
 
