@@ -91,7 +91,7 @@ def FetchData():
 
     return render_template(
 
-        'GetEmpPOutput.html', 
+        'GetEmpOutput.html', 
 
         )
 
