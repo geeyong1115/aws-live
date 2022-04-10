@@ -149,7 +149,11 @@ def triggerUpdate():
 
 @app.route("/delete/<empid>", methods=['GET'])
 def deleteEmp(empid):
-    return empid
+    cursor = db_conn.cursor()
+    cursor.execute('DELETE FROM employee WHERE empid = %s', empid)
+    db_conn.commit()
+    cursor.close()
+    return render_template('GetEmpOutput.html')
 
 
 @app.route("/fetchdata", methods=['GET'])
