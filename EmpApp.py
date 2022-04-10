@@ -111,8 +111,9 @@ def FetchData():
         rate = row[5]
         position = row[6]
         hire_date = row[7]
+        print(empid)
 
-    print(empid)
+    # print(empid)
     return render_template(
         'GetEmpOutput.html',
         empid=empid,
