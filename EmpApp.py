@@ -53,7 +53,7 @@ def AddEmp():
     location = request.form['location']
     rate_per_day = request.form['rate_per_day']
     position = request.form['position']
-    hire_date = request.form['hire_date']
+    hire_date = 1
     image = request.files['image']
     print(type(hire_date))
     conv_rate = int(rate_per_day)
