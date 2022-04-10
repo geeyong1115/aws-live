@@ -92,6 +92,7 @@ def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
     result = cursor.fetchall()
+    print(type(result))
 
     class Emp:
         def __init__(self, empid, name, gender, phone, location, rate, position, hire_date):
