@@ -175,6 +175,7 @@ def FetchData():
     results = cursor.fetchall()
     lresults = list(results)
     cursor.close()
+
     return render_template(
         'GetEmpOutput.html',
         results=lresults,
