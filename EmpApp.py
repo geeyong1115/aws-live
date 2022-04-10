@@ -43,7 +43,7 @@ def home():
     return render_template('AddEmp.html')
 
 
-@app.route("/addemp", methods=['POST'])
+@app.route("/addemp", methods=['GET', 'POST'])
 def AddEmp():
     empid = request.form['empid']
     name = request.form['name']
@@ -98,12 +98,12 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=name)
 
 
-@app.route("/getemp", methods=['GET'])
+@app.route("/getemp", methods=['GET', 'POST'])
 def getEmp():
     return render_template('GetEmp.html')
 
 
-@app.route("/update/<empid>", methods=['POST'])
+@app.route("/update/<empid>", methods=['GET', 'POST'])
 def updateEmp(empid):
 
     cursor = db_conn.cursor()
@@ -113,7 +113,7 @@ def updateEmp(empid):
     return render_template('Edit.html', results=results)
 
 
-@app.route("/triggerUpdate", methods=['POST'])
+@app.route("/triggerUpdate", methods=['GET', 'POST'])
 def triggerUpdate():
 
     empid = request.form['empid']
