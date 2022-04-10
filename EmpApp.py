@@ -3,6 +3,8 @@ from unittest import result
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
+
+from yaml import dump
 import boto3
 import webbrowser
 
@@ -124,6 +126,8 @@ def triggerUpdate():
     rate_per_day = request.form['rate_per_day']
     position = request.form['position']
     hire_date = request.form['hire_date']
+
+    print(type(rate_per_day))
 
     cursor = db_conn.cursor()
     cursor.execute(
