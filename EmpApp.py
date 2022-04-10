@@ -86,14 +86,52 @@ def FetchData():
     cursor.execute('Select * from employee')
     result = cursor.fetchall()
 
+    p = []
+
+    tbl = "<tr><td>ID</td><td>Name</td><td>Gender</td><td>Location</td><td>Rate Per Day</td><td>Position</td><td>Hire_date</td></tr>"
+    p.append(tbl)
+
     for row in result:
-        print('%r' % (row,))
+        empid = "<tr><td>%s</td>"%row[0]
+        p.append(empid)
+        name = "<td>%s</td>"%row[1]
+        p.append(name)
+        gender = "<td>%s</td>"%row[2]
+        p.append(gender)
+        phone = "<td>%s</td></tr>"%row[3]
+        p.append(phone)
+        location = "<td>%s</td></tr>"%row[3]
+        p.append(location)
+        rate_per_day = "<td>%s</td></tr>"%row[3]
+        p.append(rate_per_day)
+        position = "<td>%s</td></tr>"%row[3]
+        p.append(position)
+        hire_date = "<td>%s</td></tr>"%row[3]
+        p.append(hire_date)
 
-    return render_template(
+    contents = '''<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+    <html>
+    <head>
+    <meta content="text/html; charset=ISO-8859-1"
+    http-equiv="content-type">
+    <title>Python Webbrowser</title>
+    </head>
+    <body>
+    <table>
+    %s
+    </table>
+    </body>
+    </html>
+    '''%(p)
 
-        'GetEmpOutput.html', 
+    filename = 'templates/getEmpDetails.html'
 
-        )
+    output = open(filename,"w")
+    output.write(contents)
+    output.close()
+
+    webbrowser.open(filename)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
