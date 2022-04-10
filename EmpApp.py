@@ -44,7 +44,7 @@ def home():
     return render_template('AddEmp.html')
 
 
-@app.route("/addemp", methods=['GET', 'POST'])
+@app.route("/addemp", methods=['POST'])
 def AddEmp():
     empid = request.form['empid']
     name = request.form['name']
@@ -53,7 +53,7 @@ def AddEmp():
     location = request.form['location']
     rate_per_day = request.form['rate_per_day']
     position = request.form['position']
-    hire_date = 1
+    hire_date = request.form['hire_date']
     image = request.files['image']
     print(type(hire_date))
     conv_rate = int(rate_per_day)
@@ -61,8 +61,8 @@ def AddEmp():
     insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %d, %s, %s)"
     cursor = db_conn.cursor()
 
-    if image.filename == "":
-        return "Please select a file"
+    # if image.filename == "":
+    #     return "Please select a file"
 
     try:
 
