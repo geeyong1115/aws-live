@@ -91,11 +91,16 @@ def getEmp():
 
 
 @app.route("/update/<id>", methods=['GET', 'POST'])
-def updateEmp(id):
-    page_id = request.args.get("")
-    # if request.method == 'POST':
-    print(id)
-    return render_template('AddEmp.html')
+def updateEmp():
+    cursor = db_conn.cursor()
+    cursor.execute('Select * from employee WHERE empid = %s', id)
+    results = cursor.fetchall()
+    print(results)
+    return render_template(
+        'Edit.html',
+        results=results,
+
+    )
 
 
 @app.route("/fetchdata", methods=['GET', 'POST'])
