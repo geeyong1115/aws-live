@@ -44,7 +44,7 @@ def AddEmp():
 
     image = request.files['image']
 
-    insert_sql = "INSERT INTO employee VALUES ((%s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if image.filename == "":
@@ -52,9 +52,8 @@ def AddEmp():
 
     try:
 
-        cursor.execute(insert_sql, (empid, name, gender, phone, location, rate_per_day, position,hire_date))
+        cursor.execute(insert_sql, (empid, name, gender, phone, location, rate_per_day, position, hire_date))
         db_conn.commit()
-        emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
         image_name_in_s3 = "empid-" + str(empid) + "_image_file"
         s3 = boto3.resource('s3')
@@ -82,7 +81,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('AddEmpOutput.html', name=emp_name)
+    return render_template('AddEmpOutput.html', name=name)
 
 
 if __name__ == '__main__':
