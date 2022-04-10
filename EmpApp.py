@@ -146,6 +146,11 @@ def triggerUpdate():
     return render_template('GetEmpOutput.html')
 
 
+@app.route("/delele/{empid}", methods=['GET'])
+def deleteEmp(empid):
+    return empid
+
+
 @app.route("/fetchdata", methods=['GET'])
 def FetchData():
     cursor = db_conn.cursor()
