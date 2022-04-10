@@ -96,22 +96,27 @@ def FetchData():
     print(cursor)
     p = []
     for row in result:
-        empid = "%s," % row[0]
-        p.append(empid)
-        name = "%s," % row[1]
-        p.append(name)
-        gender = "%s," % row[2]
-        p.append(gender)
-        phone = "%s," % row[3]
-        p.append(phone)
-        location = "%s," % row[3]
-        p.append(location)
-        rate_per_day = "%s," % row[3]
-        p.append(rate_per_day)
-        position = "%s," % row[3]
-        p.append(position)
-        hire_date = "%s" % row[3]
-        p.append(hire_date)
+        empid = row[0]
+        name = row[1]
+        gender = row[2]
+        phone = row[3]
+        location = row[4]
+        rate = row[5]
+        position = row[6]
+        hire_date = row[7]
+
+    return render_template(
+        'GetEmpOutput.html',
+        empid=empid,
+        name=name,
+        gender=gender,
+        phone=phone,
+        location=location,
+        rate=rate,
+        position=position,
+        hire_date=hire_date,
+    )
+
     # for row in result:
     #     empid = "%s,"%row[0]
     #     p.append(empid)
@@ -129,8 +134,6 @@ def FetchData():
     #     p.append(position)
     #     hire_date = "%s"%row[3]
     #     p.append(hire_date)
-
-    return render_template('GetEmpOutput.html', contents=p)
 
 
 if __name__ == '__main__':
