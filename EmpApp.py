@@ -104,14 +104,14 @@ def FetchData():
 
     for row in results:
         empid.append(row[0])
-        name = row[1]
-        gender = row[2]
-        phone = row[3]
-        location = row[4]
-        rate = row[5]
-        position = row[6]
-        hire_date = row[7]
-        print(empid)
+        name.append(row[1])
+        gender.append(row[2])
+        phone.append(row[3])
+        location.append(row[4])
+        rate.append(row[5])
+        position.append(row[6])
+        hire_date.append(row[7])
+        print(position)
 
     # print(empid)
     return render_template(
