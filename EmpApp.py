@@ -57,7 +57,6 @@ def AddEmp():
             s3.Bucket(custombucket).put_object(Key=image_name_in_s3, Body=image)
             bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
             s3_location = (bucket_location['LocationConstraint'])
-
             if s3_location is None:
                 s3_location = ''
             else:
@@ -89,6 +88,12 @@ def FetchData():
 
     for row in result:
         print('%r' % (row,))
+
+    return render_template(
+
+        'GetEmpPOutput.html', 
+
+        )
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
