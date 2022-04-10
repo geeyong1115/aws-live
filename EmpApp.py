@@ -128,14 +128,15 @@ def triggerUpdate():
     cursor = db_conn.cursor()
     cursor.execute(
         'UPDATE employee SET name=%s,gender=%s,phone=%s,location=%s,rate_per_day=%d,position=%s,hire_date=%s  WHERE empid=%s',
-        name,
-        gender,
-        phone,
-        location,
-        rate_per_day,
-        position,
-        hire_date,
-        empid
+        (name,
+         gender,
+         phone,
+         location,
+         rate_per_day,
+         position,
+         hire_date,
+         empid
+         )
     )
     db_conn.commit()
 
@@ -144,7 +145,7 @@ def triggerUpdate():
     return render_template('GetEmpOutput.html')
 
 
-@app.route("/fetchdata", methods=['GET', 'POST'])
+@app.route("/fetchdata", methods=['GET'])
 def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
