@@ -78,7 +78,7 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=name)
 
 @app.route("/getemp", methods=['GET', 'POST'])
-def home():
+def getEmp():
     return render_template('GetEmp.html')
 
 @app.route("/fetchdata", methods=['POST'])
