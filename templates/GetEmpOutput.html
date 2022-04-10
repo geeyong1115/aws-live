@@ -22,14 +22,19 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>{{id}}</br></td>
+				{% for result in results %}
+
+				<td>{{result}}</td>
+				{% endfor %}
+
+				<!-- <td>{{id}}</br></td>
 				<td>{{name}}</td>
 				<td>{{gender}}</td>
 				<td>{{phone}}</td>
 				<td>{{location}}</td>
 				<td>{{rate}}</td>
 				<td>{{position}}</td>
-				<td>{{hire_date}}</td>
+				<td>{{hire_date}}</td> -->
 			</tr>
 
 		</tbody>

@@ -1,3 +1,4 @@
+from unittest import result
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -116,6 +117,7 @@ def FetchData():
     # print(empid)
     return render_template(
         'GetEmpOutput.html',
+        result=results,
         empid=empid,
         name=name,
         gender=gender,
