@@ -12,7 +12,7 @@
         <body bgcolor="lightgrey">
             {% for result in results %}
 
-            <form action="/update" autocomplete="on" method="GET" enctype="multipart/form-data">
+            <form action="/update" autocomplete="on" method="POST" enctype="multipart/form-data">
 
                 Employee ID:<br> <input value="{{result[0]}}" style="height:25px;font-size:14pt; color:grey;"
                     name="empid"><br><br>
