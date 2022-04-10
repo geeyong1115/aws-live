@@ -54,7 +54,7 @@ def AddEmp():
     rate_per_day = request.form['rate_per_day']
     position = request.form['position']
     hire_date = request.form['hire_date']
-
+    print(type(rate_per_day))
     image = request.files['image']
 
     insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %d, %s, %s)"
