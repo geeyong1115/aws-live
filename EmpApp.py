@@ -92,7 +92,6 @@ def FetchData():
     cursor = db_conn.cursor()
     cursor.execute('Select * from employee')
     results = cursor.fetchall()
-    print(list(results))
 
     empid = []
     name = []
@@ -104,7 +103,7 @@ def FetchData():
     hire_date = []
 
     for row in results:
-        empid = row
+        empid.append(row[0])
         name = row[1]
         gender = row[2]
         phone = row[3]
@@ -112,7 +111,7 @@ def FetchData():
         rate = row[5]
         position = row[6]
         hire_date = row[7]
-        # print(empid)
+        print(empid)
 
     # print(empid)
     return render_template(
