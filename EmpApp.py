@@ -3,10 +3,7 @@ from unittest import result
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
-
-from yaml import dump
 import boto3
-import webbrowser
 
 from config import *
 
